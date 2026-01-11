@@ -1,0 +1,124 @@
+{
+  "exercises": [
+    {
+      "id": "frog_squat",
+      "name": "Frog Squat",
+      "description": "Wide stance squat targeting inner thighs and glutes",
+      "bodyParts": ["Glutes", "Legs", "Hamstrings"],
+      "image": "/images/exercises/frog_squat.jpg",
+      "timers": {
+        "easy": 45,
+        "medium": 60,
+        "hard": 75
+      }
+    },
+    {
+      "id": "rdl",
+      "name": "RDL (Romanian Deadlift)",
+      "description": "Hip hinge movement for posterior chain",
+      "bodyParts": ["Glutes", "Hamstrings", "Back"],
+      "image": "/images/exercises/rdl.jpg",
+      "timers": {
+        "easy": 45,
+        "medium": 60,
+        "hard": 75
+      }
+    },
+    {
+      "id": "sumo_squat",
+      "name": "Sumo Squat",
+      "description": "Wide stance squat for glutes and inner thighs",
+      "bodyParts": ["Glutes", "Legs", "Hamstrings"],
+      "image": "/images/exercises/sumo_squat.jpg",
+      "timers": {
+        "easy": 45,
+        "medium": 60,
+        "hard": 75
+      }
+    },
+    {
+      "id": "banded_abductor_walk",
+      "name": "Banded Abductor Walk",
+      "description": "Lateral band walks to activate glutes",
+      "bodyParts": ["Glutes", "Legs"],
+      "image": "/images/exercises/banded_abductor_walk.jpg",
+      "timers": {
+        "easy": 45,
+        "medium": 60,
+        "hard": 75
+      }
+    },
+    {
+      "id": "jump_squat",
+      "name": "Jump Squat",
+      "description": "Explosive plyometric squat for power",
+      "bodyParts": ["Glutes", "Legs", "Cardio"],
+      "image": "/images/exercises/jump_squat.jpg",
+      "timers": {
+        "easy": 20,
+        "medium": 30,
+        "hard": 45
+      }
+    },
+    {
+      "id": "quadruped",
+      "name": "Quadruped",
+      "description": "Four-point core stability position",
+      "bodyParts": ["Core", "Abs"],
+      "image": "/images/exercises/quadruped.jpg",
+      "timers": {
+        "easy": 30,
+        "medium": 45,
+        "hard": 60
+      }
+    },
+    {
+      "id": "plank_knee_to_chest",
+      "name": "Plank Knee-to-Chest",
+      "description": "Dynamic plank with knee drive for core",
+      "bodyParts": ["Core", "Abs", "Shoulders"],
+      "image": "/images/exercises/plank_knee_to_chest.jpg",
+      "timers": {
+        "easy": 30,
+        "medium": 45,
+        "hard": 60
+      }
+    },
+    {
+      "id": "rainbow_leg",
+      "name": "Rainbow Leg Lift",
+      "description": "Leg arc movement for glutes and obliques",
+      "bodyParts": ["Glutes", "Core", "Abs"],
+      "image": "/images/exercises/rainbow_leg.jpg",
+      "timers": {
+        "easy": 30,
+        "medium": 45,
+        "hard": 60
+      }
+    },
+    {
+      "id": "donkey_kick",
+      "name": "Donkey Kick",
+      "description": "Glute isolation exercise on all fours",
+      "bodyParts": ["Glutes", "Hamstrings"],
+      "image": "/images/exercises/donkey_kick.png",
+      "timers": {
+        "easy": 30,
+        "medium": 45,
+        "hard": 60
+      }
+    },
+    {
+      "id": "leg_extension",
+      "name": "Leg Extension",
+      "description": "Quadriceps isolation from kneeling position",
+      "bodyParts": ["Legs", "Glutes"],
+      "image": "/images/exercises/leg_extension.jpg",
+      "timers": {
+        "easy": 30,
+        "medium": 45,
+        "hard": 60
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "presetSessions": [
+    {
+      "id": "bubble-butt-normal",
+      "name": "Bubble Butt - Normal",
+      "emoji": "🍑",
+      "color": "#f65a2f",
+      "description": "Short session for Bubble Butt, normal intensity",
+      "transitionTimer": 10,
+      "exercises": [
+        {
+          "exerciseId": "frog_squat",
+          "difficulty": "medium"
+        },
+        {
+          "exerciseId": "rdl",
+          "difficulty": "medium"
+        },
+        {
+          "exerciseId": "sumo_squat",
+          "difficulty": "medium"
+        },
+        {
+          "type": "break",
+          "duration": 60
+        },
+        {
+          "exerciseId": "banded_abductor_walk",
+          "difficulty": "medium"
+        },
+        {
+          "exerciseId": "jump_squat",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "tiny-waist",
+      "name": "Tiny Waist",
+      "emoji": "🔥",
+      "color": "#ff7f50",
+      "description": "Intense plank exercises for good waist",
+      "transitionTimer": 10,
+      "exercises": [
+        {
+          "exerciseId": "quadruped",
+          "difficulty": "medium"
+        },
+        {
+          "exerciseId": "plank_knee_to_chest",
+          "difficulty": "medium"
+        },
+        {
+          "type": "break",
+          "duration": 45
+        },
+        {
+          "exerciseId": "rainbow_leg",
+          "difficulty": "medium"
+        },
+        {
+          "exerciseId": "donkey_kick",
+          "difficulty": "medium"
+        },
+        {
+          "exerciseId": "leg_extension",
+          "difficulty": "medium"
+        }
+      ]
+    }
+  ]
+}
