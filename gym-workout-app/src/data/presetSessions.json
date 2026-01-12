@@ -67,6 +67,86 @@
           "difficulty": "medium"
         }
       ]
+    },
+    {
+      "id": "abdos-au-sol",
+      "name": "Abdos au sol",
+      "emoji": "💪",
+      "color": "#8b2332",
+      "description": "Renforcement abdominal complet - 4 séries de 20 rép",
+      "transitionTimer": 10,
+      "rounds": 4,
+      "restBetweenRounds": 60,
+      "exercises": [
+        {
+          "exerciseId": "cross_body_crunch",
+          "difficulty": "medium"
+        },
+        {
+          "exerciseId": "lying_knee_tucks",
+          "difficulty": "medium"
+        },
+        {
+          "exerciseId": "leg_extensions_crunch",
+          "difficulty": "medium"
+        },
+        {
+          "exerciseId": "glute_bridge",
+          "difficulty": "medium"
+        },
+        {
+          "exerciseId": "crunches_with_weight",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "cardio-force-vshape",
+      "name": "Cardio-Force Vshape",
+      "emoji": "⚡",
+      "color": "#ff7f50",
+      "description": "Conditionnement métabolique - 60s par exercice",
+      "transitionTimer": 15,
+      "rounds": 3,
+      "restBetweenRounds": 60,
+      "exercises": [
+        {
+          "exerciseId": "rotational_lunges",
+          "difficulty": "medium"
+        },
+        {
+          "exerciseId": "squat_high_pulls",
+          "difficulty": "medium"
+        },
+        {
+          "exerciseId": "offset_reverse_lunge_uppercuts",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "abdos-alternatifs",
+      "name": "Abdos Alternatifs",
+      "emoji": "🎪",
+      "color": "#f65a2f",
+      "description": "Gainage profond avec foam roller - 3 séries de 10 rép",
+      "transitionTimer": 10,
+      "rounds": 3,
+      "restBetweenRounds": 45,
+      "exercises": [
+        {
+          "exerciseId": "reverse_crunch_hip_abduction",
+          "difficulty": "medium"
+        },
+        {
+          "exerciseId": "tabletop_leg_extensions",
+          "difficulty": "medium"
+        },
+        {
+          "exerciseId": "reverse_crunch_hip_lift_abduction",
+          "difficulty": "medium"
+        }
+      ]
     }
   ]
 }

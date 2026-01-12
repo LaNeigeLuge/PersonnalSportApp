@@ -6,6 +6,7 @@
       "description": "Wide stance squat targeting inner thighs and glutes",
       "bodyParts": ["Glutes", "Legs", "Hamstrings"],
       "image": "/images/exercises/frog_squat.jpg",
+      "exerciseType": "timer",
       "timers": {
         "easy": 45,
         "medium": 60,
@@ -18,6 +19,7 @@
       "description": "Hip hinge movement for posterior chain",
       "bodyParts": ["Glutes", "Hamstrings", "Back"],
       "image": "/images/exercises/rdl.jpg",
+      "exerciseType": "timer",
       "timers": {
         "easy": 45,
         "medium": 60,
@@ -30,6 +32,7 @@
       "description": "Wide stance squat for glutes and inner thighs",
       "bodyParts": ["Glutes", "Legs", "Hamstrings"],
       "image": "/images/exercises/sumo_squat.jpg",
+      "exerciseType": "timer",
       "timers": {
         "easy": 45,
         "medium": 60,
@@ -42,6 +45,7 @@
       "description": "Lateral band walks to activate glutes",
       "bodyParts": ["Glutes", "Legs"],
       "image": "/images/exercises/banded_abductor_walk.jpg",
+      "exerciseType": "timer",
       "timers": {
         "easy": 45,
         "medium": 60,
@@ -54,6 +58,7 @@
       "description": "Explosive plyometric squat for power",
       "bodyParts": ["Glutes", "Legs", "Cardio"],
       "image": "/images/exercises/jump_squat.jpg",
+      "exerciseType": "timer",
       "timers": {
         "easy": 20,
         "medium": 30,
@@ -66,6 +71,7 @@
       "description": "Four-point core stability position",
       "bodyParts": ["Core", "Abs"],
       "image": "/images/exercises/quadruped.jpg",
+      "exerciseType": "timer",
       "timers": {
         "easy": 30,
         "medium": 45,
@@ -78,6 +84,7 @@
       "description": "Dynamic plank with knee drive for core",
       "bodyParts": ["Core", "Abs", "Shoulders"],
       "image": "/images/exercises/plank_knee_to_chest.jpg",
+      "exerciseType": "timer",
       "timers": {
         "easy": 30,
         "medium": 45,
@@ -90,6 +97,7 @@
       "description": "Leg arc movement for glutes and obliques",
       "bodyParts": ["Glutes", "Core", "Abs"],
       "image": "/images/exercises/rainbow_leg.jpg",
+      "exerciseType": "timer",
       "timers": {
         "easy": 30,
         "medium": 45,
@@ -102,6 +110,7 @@
       "description": "Glute isolation exercise on all fours",
       "bodyParts": ["Glutes", "Hamstrings"],
       "image": "/images/exercises/donkey_kick.png",
+      "exerciseType": "timer",
       "timers": {
         "easy": 30,
         "medium": 45,
@@ -114,11 +123,174 @@
       "description": "Quadriceps isolation from kneeling position",
       "bodyParts": ["Legs", "Glutes"],
       "image": "/images/exercises/leg_extension.jpg",
+      "exerciseType": "timer",
       "timers": {
         "easy": 30,
         "medium": 45,
         "hard": 60
       }
+    },
+    {
+      "id": "cross_body_crunch",
+      "name": "Cross-Body Crunch",
+      "description": "Elbow to opposite knee, contracting obliques",
+      "bodyParts": ["Abs", "Core"],
+      "image": "/images/exercises/placeholder.svg",
+      "exerciseType": "reps",
+      "reps": "4x20",
+      "timers": {
+        "easy": 45,
+        "medium": 60,
+        "hard": 75
+      },
+      "tips": ["Expirer sur l'effort", "Contracter les abdominaux"]
+    },
+    {
+      "id": "lying_knee_tucks",
+      "name": "Lying Knee Tucks",
+      "description": "Bring knees to chest, contracting lower abs",
+      "bodyParts": ["Abs", "Core"],
+      "image": "/images/exercises/placeholder.svg",
+      "exerciseType": "reps",
+      "reps": "4x20",
+      "timers": {
+        "easy": 45,
+        "medium": 60,
+        "hard": 75
+      },
+      "tips": ["Maintenir le dos au sol", "Contrôler le mouvement"]
+    },
+    {
+      "id": "glute_bridge",
+      "name": "Glute Bridge",
+      "description": "Elevate hips upward, activating glutes",
+      "bodyParts": ["Glutes", "Hamstrings", "Back"],
+      "image": "/images/exercises/placeholder.svg",
+      "exerciseType": "reps",
+      "reps": "4x20",
+      "timers": {
+        "easy": 45,
+        "medium": 60,
+        "hard": 75
+      },
+      "tips": ["Presser les talons au sol", "Contracter les fessiers"]
+    },
+    {
+      "id": "crunches_with_weight",
+      "name": "Crunches with Weight",
+      "description": "Classic crunch holding weight on chest",
+      "bodyParts": ["Abs", "Core"],
+      "image": "/images/exercises/placeholder.svg",
+      "exerciseType": "reps",
+      "reps": "4x20",
+      "timers": {
+        "easy": 45,
+        "medium": 60,
+        "hard": 75
+      },
+      "tips": ["Garder le poids stable", "Expirer en montant"]
+    },
+    {
+      "id": "rotational_lunges",
+      "name": "Rotational Lunges",
+      "description": "Alternating lunges with torso rotation",
+      "bodyParts": ["Legs", "Glutes", "Core"],
+      "image": "/images/exercises/placeholder.svg",
+      "exerciseType": "timer",
+      "timers": {
+        "easy": 45,
+        "medium": 60,
+        "hard": 75
+      },
+      "tips": ["Maintenir l'équilibre", "Rotation contrôlée"]
+    },
+    {
+      "id": "squat_high_pulls",
+      "name": "Squat High Pulls",
+      "description": "Squat with kettlebell, explosive upward pull",
+      "bodyParts": ["Legs", "Shoulders", "Back", "Core"],
+      "image": "/images/exercises/placeholder.svg",
+      "exerciseType": "timer",
+      "timers": {
+        "easy": 45,
+        "medium": 60,
+        "hard": 75
+      },
+      "tips": ["Mouvement explosif", "Tirer avec les coudes hauts"]
+    },
+    {
+      "id": "offset_reverse_lunge_uppercuts",
+      "name": "Offset Reverse Lunge Uppercuts",
+      "description": "Reverse lunge with alternating uppercut movements",
+      "bodyParts": ["Legs", "Glutes", "Shoulders", "Core"],
+      "image": "/images/exercises/placeholder.svg",
+      "exerciseType": "timer",
+      "timers": {
+        "easy": 45,
+        "medium": 60,
+        "hard": 75
+      },
+      "tips": ["Coordonner bras et jambes", "Maintenir la posture"]
+    },
+    {
+      "id": "reverse_crunch_hip_abduction",
+      "name": "Reverse Crunch with Hip Abduction",
+      "description": "Foam roller: knees to chest while spreading legs",
+      "bodyParts": ["Abs", "Core"],
+      "image": "/images/exercises/placeholder.svg",
+      "exerciseType": "reps",
+      "reps": "3x10",
+      "timers": {
+        "easy": 30,
+        "medium": 45,
+        "hard": 60
+      },
+      "tips": ["Stabiliser sur le foam roller", "Mouvement contrôlé"]
+    },
+    {
+      "id": "tabletop_leg_extensions",
+      "name": "Tabletop Leg Extensions",
+      "description": "Foam roller: alternating leg extensions from tabletop",
+      "bodyParts": ["Abs", "Core"],
+      "image": "/images/exercises/placeholder.svg",
+      "exerciseType": "reps",
+      "reps": "3x10",
+      "timers": {
+        "easy": 30,
+        "medium": 45,
+        "hard": 60
+      },
+      "tips": ["Maintenir position tabletop", "Contrôler l'instabilité"]
+    },
+    {
+      "id": "reverse_crunch_hip_lift_abduction",
+      "name": "Reverse Crunch with Hip Lift & Abduction",
+      "description": "Foam roller: complete reverse crunch with hip elevation and leg spreading",
+      "bodyParts": ["Abs", "Core", "Back"],
+      "image": "/images/exercises/placeholder.svg",
+      "exerciseType": "reps",
+      "reps": "3x10",
+      "timers": {
+        "easy": 30,
+        "medium": 45,
+        "hard": 60
+      },
+      "tips": ["Mouvement lent et contrôlé", "Stabilité essentielle"]
+    },
+    {
+      "id": "leg_extensions_crunch",
+      "name": "Leg Extensions (Crunch Position)",
+      "description": "Extend and bring back straight legs from crunch position",
+      "bodyParts": ["Abs", "Legs", "Core"],
+      "image": "/images/exercises/placeholder.svg",
+      "exerciseType": "reps",
+      "reps": "4x20",
+      "timers": {
+        "easy": 45,
+        "medium": 60,
+        "hard": 75
+      },
+      "tips": ["Garder le bas du dos au sol", "Jambes tendues"]
     }
   ]
 }

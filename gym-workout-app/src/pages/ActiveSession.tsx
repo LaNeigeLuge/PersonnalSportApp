@@ -56,6 +56,11 @@ export default function ActiveSession() {
   useEffect(() => {
     if (isPaused || phase === 'complete') return;
 
+    // Don't run timer for rep-based exercises during exercise phase
+    if (phase === 'exercise' && currentExercise?.exerciseType === 'reps') {
+      return;
+    }
+
     const interval = setInterval(() => {
       setTimeRemaining((prev) => {
         if (prev <= 1) {
@@ -76,7 +81,12 @@ export default function ActiveSession() {
         const exercise = exercises.find((e) => e.id === currentItem.exerciseId);
         if (exercise) {
           setPhase('exercise');
-          setTimeRemaining(exercise.timers[currentItem.difficulty]);
+          // Only start timer for timer-based exercises
+          if (exercise.exerciseType === 'timer' || !exercise.exerciseType) {
+            setTimeRemaining(exercise.timers[currentItem.difficulty]);
+          } else {
+            setTimeRemaining(0); // Rep-based exercises don't use timer
+          }
           if (soundEnabled) {
             audioManager.exerciseStart();
             vibrate([200, 100, 200]);
@@ -136,6 +146,11 @@ export default function ActiveSession() {
 
   const handleExtend = () => {
     setTimeRemaining((prev) => prev + 15);
+  };
+
+  const handleCompleteReps = () => {
+    // For rep-based exercises, manually complete
+    handlePhaseComplete();
   };
 
   const handleExit = () => {
@@ -274,10 +289,21 @@ export default function ActiveSession() {
             )}
           </div>
 
-          {/* Timer */}
-          <div className="text-9xl font-bold font-serif mb-8 tabular-nums">
-            {Math.floor(timeRemaining / 60)}:{String(timeRemaining % 60).padStart(2, '0')}
-          </div>
+          {/* Timer or Reps Display */}
+          {currentExercise && phase === 'exercise' && currentExercise.exerciseType === 'reps' ? (
+            // Rep-based exercise display
+            <div className="mb-8">
+              <div className="text-6xl font-bold font-serif mb-4 text-coral-400">
+                {currentExercise.reps}
+              </div>
+              <p className="text-2xl text-gray-400">séries × répétitions</p>
+            </div>
+          ) : (
+            // Timer display
+            <div className="text-9xl font-bold font-serif mb-8 tabular-nums">
+              {Math.floor(timeRemaining / 60)}:{String(timeRemaining % 60).padStart(2, '0')}
+            </div>
+          )}
 
           {/* Exercise Info */}
           {currentExercise && phase !== 'transition' && (
@@ -293,6 +319,21 @@ export default function ActiveSession() {
                   className="w-full h-auto rounded-2xl"
                 />
               </div>
+
+              {/* Tips (for rep-based exercises) */}
+              {currentExercise.tips && currentExercise.tips.length > 0 && phase === 'exercise' && (
+                <div className="bg-blue-500/10 border border-blue-500/20 rounded-2xl p-6 mb-8 max-w-2xl mx-auto">
+                  <h3 className="text-lg font-semibold text-blue-300 mb-3">💡 Conseils</h3>
+                  <ul className="text-left text-gray-300 space-y-2">
+                    {currentExercise.tips.map((tip) => (
+                      <li key={tip} className="flex items-start">
+                        <span className="text-blue-400 mr-2">•</span>
+                        <span>{tip}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               {/* Body Parts */}
               <div className="flex justify-center gap-2 mb-8">
@@ -318,28 +359,41 @@ export default function ActiveSession() {
 
         {/* Controls */}
         <div className="flex justify-center gap-4">
-          <button
-            onClick={handlePause}
-            className="px-8 py-4 bg-white/10 hover:bg-white/20 rounded-2xl font-bold text-lg transition-colors"
-          >
-            {isPaused ? '▶ Resume' : '⏸ Pause'} (Space)
-          </button>
-
-          {phase === 'exercise' && (
+          {phase === 'exercise' && currentExercise?.exerciseType === 'reps' ? (
+            // Rep-based exercise: Show "Terminer" button
             <button
-              onClick={handleExtend}
-              className="px-8 py-4 bg-coral-500 hover:bg-coral-600 text-white rounded-2xl font-bold text-lg transition-all shadow-lg hover:shadow-xl border-2 border-coral-400"
+              onClick={handleCompleteReps}
+              className="px-12 py-6 bg-coral-500 hover:bg-coral-600 text-white rounded-2xl font-bold text-2xl transition-all shadow-lg hover:shadow-xl border-2 border-coral-400"
             >
-              ⏱️ +15s
+              ✓ Terminer l'exercice
             </button>
-          )}
+          ) : (
+            // Timer-based exercise: Show normal controls
+            <>
+              <button
+                onClick={handlePause}
+                className="px-8 py-4 bg-white/10 hover:bg-white/20 rounded-2xl font-bold text-lg transition-colors"
+              >
+                {isPaused ? '▶ Resume' : '⏸ Pause'} (Space)
+              </button>
 
-          <button
-            onClick={handleSkip}
-            className="px-8 py-4 bg-white/10 hover:bg-white/20 rounded-2xl font-bold text-lg transition-colors"
-          >
-            Skip (→)
-          </button>
+              {phase === 'exercise' && (
+                <button
+                  onClick={handleExtend}
+                  className="px-8 py-4 bg-coral-500 hover:bg-coral-600 text-white rounded-2xl font-bold text-lg transition-all shadow-lg hover:shadow-xl border-2 border-coral-400"
+                >
+                  ⏱️ +15s
+                </button>
+              )}
+
+              <button
+                onClick={handleSkip}
+                className="px-8 py-4 bg-white/10 hover:bg-white/20 rounded-2xl font-bold text-lg transition-colors"
+              >
+                Skip (→)
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>

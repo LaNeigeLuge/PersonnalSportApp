@@ -12,6 +12,9 @@ export interface Exercise {
     medium: number;
     hard: number;
   };
+  exerciseType?: 'timer' | 'reps';
+  reps?: string;
+  tips?: string[];
 }
 
 export interface SessionExercise {
