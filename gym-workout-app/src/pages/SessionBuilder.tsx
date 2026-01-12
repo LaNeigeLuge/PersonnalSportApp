@@ -7,11 +7,6 @@ import type { Exercise, DifficultyLevel, SessionItem, CustomSession } from '../t
 
 const exercises = exercisesData.exercises as Exercise[];
 
-interface SelectedExercise {
-  exerciseId: string;
-  difficulty: DifficultyLevel;
-}
-
 export default function SessionBuilder() {
   const navigate = useNavigate();
   const { addCustomSession } = useSessionStore();
@@ -210,6 +205,9 @@ export default function SessionBuilder() {
                         </div>
                       );
                     }
+
+                    // Type guard for SessionExercise
+                    if (!('exerciseId' in item)) return null;
 
                     const exercise = getExerciseById(item.exerciseId);
                     if (!exercise) return null;
