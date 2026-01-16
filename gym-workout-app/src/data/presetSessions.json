@@ -6,7 +6,7 @@
       "emoji": "🍑",
       "color": "#f65a2f",
       "description": "Short session for Bubble Butt, normal intensity",
-      "transitionTimer": 10,
+      "transitionTimer": 15,
       "exercises": [
         {
           "exerciseId": "frog_squat",
@@ -40,7 +40,7 @@
       "emoji": "🔥",
       "color": "#ff7f50",
       "description": "Intense plank exercises for good waist",
-      "transitionTimer": 10,
+      "transitionTimer": 15,
       "exercises": [
         {
           "exerciseId": "quadruped",
@@ -56,11 +56,23 @@
         },
         {
           "exerciseId": "rainbow_leg",
-          "difficulty": "medium"
+          "difficulty": "medium",
+          "side": "left"
+        },
+        {
+          "exerciseId": "rainbow_leg",
+          "difficulty": "medium",
+          "side": "right"
         },
         {
           "exerciseId": "donkey_kick",
-          "difficulty": "medium"
+          "difficulty": "medium",
+          "side": "left"
+        },
+        {
+          "exerciseId": "donkey_kick",
+          "difficulty": "medium",
+          "side": "right"
         },
         {
           "exerciseId": "leg_extension",
@@ -74,7 +86,7 @@
       "emoji": "💪",
       "color": "#8b2332",
       "description": "Renforcement abdominal complet - 4 séries de 20 rép",
-      "transitionTimer": 10,
+      "transitionTimer": 15,
       "rounds": 4,
       "restBetweenRounds": 60,
       "exercises": [
@@ -130,7 +142,7 @@
       "emoji": "🎪",
       "color": "#f65a2f",
       "description": "Gainage profond avec foam roller - 3 séries de 10 rép",
-      "transitionTimer": 10,
+      "transitionTimer": 15,
       "rounds": 3,
       "restBetweenRounds": 45,
       "exercises": [

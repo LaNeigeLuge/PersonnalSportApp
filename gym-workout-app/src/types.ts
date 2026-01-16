@@ -15,11 +15,13 @@ export interface Exercise {
   exerciseType?: 'timer' | 'reps';
   reps?: string;
   tips?: string[];
+  bilateral?: boolean; // true if exercise needs to be done on both sides (e.g., each leg)
 }
 
 export interface SessionExercise {
   exerciseId: string;
   difficulty: DifficultyLevel;
+  side?: 'left' | 'right'; // For bilateral exercises
 }
 
 export interface SessionBreak {

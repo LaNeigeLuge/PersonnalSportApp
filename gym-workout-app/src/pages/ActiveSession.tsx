@@ -29,6 +29,7 @@ export default function ActiveSession() {
   const [startTime] = useState(Date.now());
   const [completedCount, setCompletedCount] = useState(0);
   const [showSummary, setShowSummary] = useState(false);
+  const [sessionClock, setSessionClock] = useState(0); // Always-running clock in seconds
 
   if (!session) {
     return (
@@ -51,6 +52,24 @@ export default function ActiveSession() {
     currentItem && 'exerciseId' in currentItem
       ? exercises.find((e) => e.id === currentItem.exerciseId)
       : null;
+
+  // Get next exercise for transition preview
+  const nextItem = session.exercises[currentItemIndex + 1];
+  const nextExercise =
+    nextItem && 'exerciseId' in nextItem
+      ? exercises.find((e) => e.id === nextItem.exerciseId)
+      : null;
+
+  // Session clock - always runs regardless of pause
+  useEffect(() => {
+    if (phase === 'complete') return;
+
+    const clockInterval = setInterval(() => {
+      setSessionClock((prev) => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(clockInterval);
+  }, [phase]);
 
   // Timer logic
   useEffect(() => {
@@ -144,6 +163,15 @@ export default function ActiveSession() {
     }
   };
 
+  const handleGoBack = () => {
+    if (currentItemIndex > 0) {
+      setCurrentItemIndex(currentItemIndex - 1);
+      setPhase('countdown');
+      setTimeRemaining(3);
+      setIsPaused(false);
+    }
+  };
+
   const handleExtend = () => {
     setTimeRemaining((prev) => prev + 15);
   };
@@ -181,6 +209,9 @@ export default function ActiveSession() {
       } else if (e.key === 'ArrowRight') {
         e.preventDefault();
         handleSkip();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        handleGoBack();
       } else if (e.key === 'Escape') {
         e.preventDefault();
         handleExit();
@@ -189,7 +220,7 @@ export default function ActiveSession() {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, []);
+  }, [currentItemIndex]);
 
   // Summary Modal
   if (showSummary) {
@@ -245,12 +276,21 @@ export default function ActiveSession() {
               Exercise {currentItemIndex + 1} of {session.exercises.length}
             </p>
           </div>
-          <button
-            onClick={handleExit}
-            className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-300 rounded-xl transition-colors"
-          >
-            Exit (Esc)
-          </button>
+          <div className="flex items-center gap-4">
+            {/* Session Clock - Always Running */}
+            <div className="bg-white/10 px-6 py-3 rounded-xl">
+              <div className="text-sm text-gray-400 mb-1">Session Time</div>
+              <div className="text-2xl font-bold font-mono tabular-nums">
+                {Math.floor(sessionClock / 60)}:{String(sessionClock % 60).padStart(2, '0')}
+              </div>
+            </div>
+            <button
+              onClick={handleExit}
+              className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-300 rounded-xl transition-colors"
+            >
+              Exit (Esc)
+            </button>
+          </div>
         </div>
 
         {/* Progress Bar */}
@@ -279,7 +319,7 @@ export default function ActiveSession() {
             )}
             {phase === 'transition' && (
               <span className="px-6 py-2 bg-blue-500/20 text-blue-300 rounded-full text-lg font-medium">
-                Transition
+                Transition - Get Ready!
               </span>
             )}
             {phase === 'break' && (
@@ -308,7 +348,14 @@ export default function ActiveSession() {
           {/* Exercise Info */}
           {currentExercise && phase !== 'transition' && (
             <>
-              <h1 className="text-5xl font-serif font-bold mb-4">{currentExercise.name}</h1>
+              <h1 className="text-5xl font-serif font-bold mb-4">
+                {currentExercise.name}
+                {currentExercise.bilateral && currentItem && 'side' in currentItem && currentItem.side && (
+                  <span className="ml-4 text-coral-400">
+                    ({currentItem.side === 'left' ? 'Left' : 'Right'} side)
+                  </span>
+                )}
+              </h1>
               <p className="text-xl text-gray-400 mb-8">{currentExercise.description}</p>
 
               {/* Exercise Image */}
@@ -355,21 +402,101 @@ export default function ActiveSession() {
           {phase === 'break' && (
             <div className="text-6xl mb-8">☕</div>
           )}
+
+          {/* Transition - Show Next Exercise Preview */}
+          {phase === 'transition' && nextExercise && (
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-serif font-bold mb-4 text-blue-300">Next Up:</h2>
+              <div className="bg-white/10 rounded-3xl p-8 mb-8">
+                <h3 className="text-4xl font-serif font-bold mb-3">{nextExercise.name}</h3>
+                <p className="text-xl text-gray-300 mb-6">{nextExercise.description}</p>
+
+                {/* Next Exercise Image Preview */}
+                <div className="bg-white/5 rounded-2xl p-6 mb-4">
+                  <img
+                    src={nextExercise.image}
+                    alt={nextExercise.name}
+                    className="w-full max-w-md mx-auto h-auto rounded-xl"
+                  />
+                </div>
+
+                {/* Body Parts */}
+                <div className="flex justify-center gap-2">
+                  {nextExercise.bodyParts.map((part) => {
+                    const colors = getBodyPartColor(part);
+                    return (
+                      <span
+                        key={part}
+                        className={`px-4 py-2 ${colors.bg} ${colors.text} rounded-xl text-sm font-medium`}
+                      >
+                        {part}
+                      </span>
+                    );
+                  })}
+                </div>
+
+                {/* Tips if available */}
+                {nextExercise.tips && nextExercise.tips.length > 0 && (
+                  <div className="mt-6 bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
+                    <h4 className="text-sm font-semibold text-blue-300 mb-2">💡 Tips:</h4>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      {nextExercise.tips.map((tip) => (
+                        <li key={tip} className="flex items-start">
+                          <span className="text-blue-400 mr-2">•</span>
+                          <span>{tip}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {phase === 'transition' && !nextExercise && nextItem && 'type' in nextItem && (
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-serif font-bold mb-4 text-blue-300">Next Up:</h2>
+              <div className="bg-white/10 rounded-3xl p-8">
+                <div className="text-6xl mb-4">☕</div>
+                <h3 className="text-4xl font-serif font-bold">Break Time</h3>
+                <p className="text-xl text-gray-300 mt-2">{nextItem.duration} seconds</p>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Controls */}
         <div className="flex justify-center gap-4">
           {phase === 'exercise' && currentExercise?.exerciseType === 'reps' ? (
             // Rep-based exercise: Show "Terminer" button
-            <button
-              onClick={handleCompleteReps}
-              className="px-12 py-6 bg-coral-500 hover:bg-coral-600 text-white rounded-2xl font-bold text-2xl transition-all shadow-lg hover:shadow-xl border-2 border-coral-400"
-            >
-              ✓ Terminer l'exercice
-            </button>
+            <>
+              {currentItemIndex > 0 && (
+                <button
+                  onClick={handleGoBack}
+                  className="px-8 py-4 bg-white/10 hover:bg-white/20 rounded-2xl font-bold text-lg transition-colors"
+                >
+                  ← Back
+                </button>
+              )}
+              <button
+                onClick={handleCompleteReps}
+                className="px-12 py-6 bg-coral-500 hover:bg-coral-600 text-white rounded-2xl font-bold text-2xl transition-all shadow-lg hover:shadow-xl border-2 border-coral-400"
+              >
+                ✓ Terminer l'exercice
+              </button>
+            </>
           ) : (
             // Timer-based exercise: Show normal controls
             <>
+              {currentItemIndex > 0 && (
+                <button
+                  onClick={handleGoBack}
+                  className="px-8 py-4 bg-white/10 hover:bg-white/20 rounded-2xl font-bold text-lg transition-colors"
+                >
+                  ← Back (←)
+                </button>
+              )}
+
               <button
                 onClick={handlePause}
                 className="px-8 py-4 bg-white/10 hover:bg-white/20 rounded-2xl font-bold text-lg transition-colors"

@@ -98,6 +98,7 @@
       "bodyParts": ["Glutes", "Core", "Abs"],
       "image": "/images/exercises/rainbow_leg.jpg",
       "exerciseType": "timer",
+      "bilateral": true,
       "timers": {
         "easy": 30,
         "medium": 45,
@@ -111,6 +112,7 @@
       "bodyParts": ["Glutes", "Hamstrings"],
       "image": "/images/exercises/donkey_kick.png",
       "exerciseType": "timer",
+      "bilateral": true,
       "timers": {
         "easy": 30,
         "medium": 45,
